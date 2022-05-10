@@ -3,6 +3,8 @@ package com.api.book.entities;
 
 
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import javax.persistence.*;
 
 @Entity
@@ -17,6 +19,7 @@ public class Book {
     private int id;
     private String title;
     @OneToOne(cascade = CascadeType.ALL)
+    @JsonManagedReference
     private Author author;
 
     public Book(int id, String title, Author author) {

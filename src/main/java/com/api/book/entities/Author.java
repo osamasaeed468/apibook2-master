@@ -1,6 +1,8 @@
 package com.api.book.entities;
 
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import javax.persistence.*;
 
 @Entity
@@ -16,6 +18,17 @@ public class Author {
     @Column(name = "last_name")
     private String lastName;
     private String language;
+    @OneToOne(mappedBy = "author")
+    @JsonBackReference
+    private Book book;
+
+    public Book getBook() {
+        return book;
+    }
+
+    public void setBook(Book book) {
+        this.book = book;
+    }
 
     public int getAuthorId() {
         return authorId;
